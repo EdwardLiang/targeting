@@ -21,7 +21,23 @@
 class Rectangle
 {
     public:
-        virtual bool isType(PrototypeRectangle);
-        virtual Rectangle instantiate(PrototypeRectangle);
-        virtual void toString();
+        Rectangle(PrototypeRectangle);
+        virtual bool isType(PrototypeRectangle) = 0;
+        virtual Rectangle instantiate(PrototypeRectangle) = 0;
+        void toString();
+
+        // Data
+        std::vector<cv::Point> rectPoints;
+        bool markedForRemoval; // Marked for removal
+        float area; // Area
+        cv::Point topLeft; // Top Left Corner
+        cv::Point topRight; // Top Right Corner
+        cv::Point bottomRight; // Bottom Right Corner
+        cv::Point bottomLeft; // Bottom Left Corner
+        cv::Point center; // Center Point
+        int lengthSquaredLeft; // Square of Length of Left Side
+        int lengthSquaredRight; // Square of Length of Right Side
+        int lengthSquaredTop; // Square of Length of Top Side
+        int lengthSquaredBottom; // Square of Length of Bottom Side
+        std::string rectName;
 };

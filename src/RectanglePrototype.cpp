@@ -19,6 +19,8 @@
 #include "config.h"
 #endif
 
+#include "constants.h"
+
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
