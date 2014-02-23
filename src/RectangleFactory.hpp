@@ -15,13 +15,20 @@
  *    along with FRC Team 3341 Targeting.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef Rectangle_hpp
-#define Rectangle_hpp
+#ifndef RectangleFactory_hpp
+#define RectangleFactory_hpp
 
-class Rectangle
+class RectangleFactory
 {
     public:
-        virtual bool isType(PrototypeRectangle);
-        virtual Rectangle instantiate(PrototypeRectangle);
-        virtual void toString();
+        // Methods
+        RectangleFactory(); // Constructor
+        std::vector<Rectangle> rectangleTypes;
+        RectangleFactory getInstance();
+        std::vector<Rectangle> createRectangles(std::vector<RectanglePrototype>);
+        Rectangle createRectangle(Rectangle);
+    private:
+        static RectangleFactory;
 };
+
+#endif 

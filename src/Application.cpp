@@ -145,13 +145,14 @@ void Application::targetingContinuous()
 
         if (config.getIsNetworking())
             networkController->sendMessage(boost::lexical_cast<std::string>(multiRectProcessor.getFinalProcessor()->getTarget()) + std::string(";") + boost::lexical_cast<std::string>(multiRectProcessor.getFinalProcessor()->getProportionalDistance()) + std::string(";") + boost::lexical_cast<std::string>(multiRectProcessor.getFinalProcessor()->getHorizontalDistance()) + std::string(";") + boost::lexical_cast<std::string>(multiRectProcessor.getFinalProcessor()->getAzimuth()));
-    } else {
+     else {
         std::cout << "No rectangle" << std::endl;
 
         if (config.getIsNetworking())
             networkController->sendMessage("No rectangle");
     }
 
+     
     if (! config.getIsHeadless()) {
         std::string message;
         if (rectDetector.rectangleWasFound())
@@ -172,6 +173,7 @@ void Application::targetingContinuous()
         std::cin >> waitForKey;
         exit(EXIT_SUCCESS);
     }
+    
 }
 
 void Application::captureInit()

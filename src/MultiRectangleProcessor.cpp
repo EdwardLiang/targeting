@@ -50,6 +50,7 @@ void MultiRectangleProcessor::processRectangles(std::vector<Rectangle> inputRect
   rectList = inputRectangles;
   verticalRectangleList.clear();
   horizontalRectangleList.clear();
+
   findVerticalRectangles();
   findHorizontalRectangles();
   findVHPairs();

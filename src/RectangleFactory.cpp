@@ -29,12 +29,33 @@
 #include <string>
 #include <sstream>
 
-#include "Rectangle.hpp"
+#include "RectangleFactory.hpp"
 
-Rectangle::Rectangle()
+/*DESCRIPTION: Singleton Factory that takes RectanglePrototype objects and create full Rectangle Objects from them. */
+
+RectangleFactory::RectangleFactory()
 {
+    // Add Rectangle subclasses Factory will check for.
+    // example: RectangleTypes.push_back(new GenericRectangle);
 }
-bool Rectangle::isType(PrototypeRectangle){}
-Rectangle Rectangle::instantiate(PrototypeRectangle){}
-void Rectangle::toString(){}
 
+RectangleFactory RectangleFactory::getInstance(){
+    if(instance == NULL){
+        instance = new RectangleFactory();
+    }
+    return instance;
+}
+
+std::vector<Rectangle> RectangleFactory::createRectangles(std::vector<PrototypeRectangle*> protos){
+    std::vector<Rectangle> rects;
+    for (int i = 0; i < protos.size(); ++i) {
+        rects.push_back(createRectangle(proto.at(i)));
+    }
+}
+
+Rectangle RectangleFactory::createRectangle(PrototypeRectangle proto){
+    for (int a = 0; a < rectangleTypes.size(); ++a) {
+        if(RectangleTypes.at(a).isType(proto))
+            return RectangleTypes.at(a).instantiate(proto);    
+    }
+}
